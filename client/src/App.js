@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import FetchUser from './components/FetchUser';
+import ProtectedRoute from './components/ProtectedRoute';
+import MyCats from './components/MyCats';
 import { Switch, Route, } from 'react-router-dom'
 import { Container, } from 'semantic-ui-react'
 
@@ -15,7 +17,9 @@ const App = () => (
     <Container>
       <FetchUser>
         <Switch>
-          <Route exact path="/" component={Home} />
+          {/* routes will render if the user has a valid token, or not */}
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/my_cats" component={MyCats} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />

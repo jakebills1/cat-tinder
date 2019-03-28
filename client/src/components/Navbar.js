@@ -7,6 +7,7 @@ class Navbar extends React.Component {
   rightNavItems = () => {
     const { auth: { user, handleLogout, }} = this.props;
     if (user) {
+      // user is signed in
       return (
         <Menu.Menu position="right">
           <Menu.Item
@@ -17,6 +18,7 @@ class Navbar extends React.Component {
       )
     } else {
       return (
+        // user is not signed in
         <Menu.Menu position="right">
           <Link to="/login">
             <Menu.Item 
